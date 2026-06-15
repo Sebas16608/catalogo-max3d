@@ -28,6 +28,7 @@ class Product(models.Model):
         Category, on_delete=models.CASCADE, related_name="product"
     )
     is_available = models.BooleanField(default=True)
+    author = models.URLField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
