@@ -6,10 +6,12 @@ from products.models import Category, Product
 class CategorySerializer(ModelSerializer):
     class Meta:
         model = Category
-        fields = ["name", "slug", "description"]
+        fields = "__all__"
 
 
 class ProductSerializer(ModelSerializer):
+    category_detail = CategorySerializer(source="category", read_only=True)
+
     class Meta:
         model = Product
-        fields = ["name", "slug", "description"]
+        fields = "__all__"

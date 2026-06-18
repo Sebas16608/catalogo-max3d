@@ -23,11 +23,12 @@ class Product(models.Model):
     slug = models.SlugField(unique=True)
     description = models.TextField(blank=True, null=True)
     price = models.DecimalField(decimal_places=2, max_digits=10)
-    image = models.URLField(blank=True, null=True)
+    image = models.ImageField(upload_to="products/", blank=True, null=True)
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, related_name="product"
     )
     is_available = models.BooleanField(default=True)
+    season = models.BooleanField(default=False)
     author = models.URLField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
